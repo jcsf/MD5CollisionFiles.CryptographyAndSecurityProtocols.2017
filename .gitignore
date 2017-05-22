@@ -1,0 +1,14 @@
+# MD5Compress
+MD5Compress/.idea/
+MD5Compress/out/
+
+# BIT
+RenderFarmBIT/.idea/
+RenderFarmBIT/out/
+
+# Load Balancer
+RenderFarmLoadBalancer/.idea/
+RenderFarmLoadBalancer/out/
+RenderFarmLoadBalancer/**/*.log
+
+*.iml
