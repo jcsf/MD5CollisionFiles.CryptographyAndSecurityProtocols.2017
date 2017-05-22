@@ -1,14 +1,9 @@
-# MD5Compress
+# MD5 Compress
 MD5Compress/.idea/
 MD5Compress/out/
 
-# BIT
-RenderFarmBIT/.idea/
-RenderFarmBIT/out/
-
-# Load Balancer
-RenderFarmLoadBalancer/.idea/
-RenderFarmLoadBalancer/out/
-RenderFarmLoadBalancer/**/*.log
+# MD5 Collision Files
+MD5CollisionFiles/.idea/
+MD5CollisionFiles/out/
 
 *.iml
