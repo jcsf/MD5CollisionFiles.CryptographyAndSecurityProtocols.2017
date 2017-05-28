@@ -62,7 +62,7 @@ public class GenerateFiles extends HttpServlet {
             output2 = request.getParameter("fileTwo");
         }
 
-        byte[] md5FileOne = null, md5FileTwo = null;
+        byte[] md5FileOne = null, md5FileTwo = null, sha256FileOne = null, sha256FileTwo = null;
 
         String temp = "_" + generateRandomSecureNumber();
 
@@ -86,15 +86,19 @@ public class GenerateFiles extends HttpServlet {
                 generateScriptFiles(templateFile2, outFile2, codeOne, codeTwo);
             }
 
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest mdMD5 = MessageDigest.getInstance("MD5");
+            MessageDigest mdSHA256 = MessageDigest.getInstance("SHA-256");
 
-            md5FileOne = md.digest(Files.readAllBytes(outFile1.toPath()));
-            md5FileTwo = md.digest(Files.readAllBytes(outFile2.toPath()));
+            md5FileOne = mdMD5.digest(Files.readAllBytes(outFile1.toPath()));
+            md5FileTwo = mdMD5.digest(Files.readAllBytes(outFile2.toPath()));
+            sha256FileOne = mdSHA256.digest(Files.readAllBytes(outFile1.toPath()));
+            sha256FileTwo = mdSHA256.digest(Files.readAllBytes(outFile2.toPath()));
         } catch (Exception e) {
             out.println(e.getStackTrace());
+            return;
         }
 
-        String content = HTML_Templates.htmlGeneratedFiles(request.getContextPath(), output1, output2, temp, extension, toHexString(md5FileOne), toHexString(md5FileTwo));
+        String content = HTML_Templates.htmlGeneratedFiles(request.getContextPath(), output1, output2, temp, extension, toHexString(md5FileOne), toHexString(md5FileTwo), toHexString(sha256FileOne), toHexString(sha256FileTwo));
 
         out.println(HTML_Templates.htmlFile(HTML_Templates.htmlHeader(request.getContextPath(), "Generated Files"), content));
     }

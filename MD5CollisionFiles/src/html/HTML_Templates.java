@@ -24,7 +24,7 @@ public class HTML_Templates {
                 "  </head>";
     }
 
-    public static String htmlGeneratedFiles(String requestPath, String fileOne, String fileTwo, String ref, String extension, String md5One, String md5Two) {
+    public static String htmlGeneratedFiles(String requestPath, String fileOne, String fileTwo, String ref, String extension, String md5One, String md5Two, String sha256One, String sha256Two) {
         String downloadURI_1 = String.format("%s/download?file=%s&ref=%s&ext=%s", requestPath, fileOne, ref, extension);
         String downloadURI_2 = String.format("%s/download?file=%s&ref=%s&ext=%s", requestPath, fileTwo, ref, extension);
 
@@ -36,13 +36,15 @@ public class HTML_Templates {
                 "           <div class=\"col-sm-6 text-center\">\n" +
                 "               <p><i class=\"glyphicon glyphicon-file\" aria-hidden=\"true\" style=\"font-size: 75px;\"></i></p>\n" +
                 "               <h2>" + fileOne + extension + "</h2>\n" +
-                "               <p><b>MD5: </b>" + md5One + "</p>\n" +
+                "               <p><b>MD5</b><br>" + md5One + "</p>\n" +
+                "               <p><b>SHA256</b><br><span style=\"font-size: 12.5px;\">" + sha256One + "</span></p>\n" +
                 "               <a class=\"btn btn-success btn-lg btn-block\" href=\""+ downloadURI_1 +"\" role=\"button\">Download File</a>\n" +
                 "           </div>\n" +
                 "           <div class=\"col-sm-6 text-center\">\n" +
                 "               <p><i class=\"glyphicon glyphicon-file\" aria-hidden=\"true\" style=\"font-size: 75px;\"></i></p>\n" +
                 "               <h2>" + fileTwo + extension + "</h2>\n" +
-                "               <p><b>MD5: </b>" + md5Two + "</p>\n" +
+                "               <p><b>MD5</b><br>" + md5Two + "</p>\n" +
+                "               <p><b>SHA256</b><br><span style=\"font-size: 12.5px;\">" + sha256Two + "</span></p>\n" +
                 "               <a class=\"btn btn-danger btn-lg btn-block\" href=\""+ downloadURI_2 +"\" role=\"button\">Download File</a>\n" +
                 "           </div>\n" +
                 "       </div>\n" +
